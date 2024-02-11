@@ -5,13 +5,17 @@ class ProductManager {
     constructor() {
         this.products = []
     }
+    getProducts() {
+      return this.products;
+    }
     addProduct(producto) {
         //VALIDAR QUE TODOS LOS DATOS SE HAYAN INGRESADO
         if(!producto.title || !producto.description || !producto.price || !producto.thumbnail || !producto.code || !producto.stock) {
         console.error('Cargar información de todos los campos');
+        
         }
         //const indice = this.products.findIndex(prod = prod.code === producto.code)
-        const existe = this.products.includes (prod => prod.code === producto.code)
+        const existe = this.products.some(prod => prod.code === producto.code)
 
         //EXISTE este producto en el array
         if (existe) {
@@ -22,9 +26,7 @@ class ProductManager {
         }
       }
       
-      getProducts() {
-        return this.products;
-      }
+      
       getProductById(id) {
       const producto = this.products.find(prod => prod.id === id);
 
@@ -61,4 +63,7 @@ console.log(prodManager.getProducts());
 
 console.log(prodManager.getProductById('abc123'));
 console.log(prodManager.getProductById('xyz789')); 
+
+
+
 
